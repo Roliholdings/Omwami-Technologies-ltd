@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="OMWAMI TECHNOLOGIES - Custom industrial & food-processing machinery. Headquartered in Nairobi, Kenya. Serving Africa & worldwide." />
+  <meta name="keywords" content="industrial machinery, Omwami technologies, ROLi Holdings Ltd, ROLi Clouds, food processing, reverse osmosis, Balcony,Staircase Designers, milk ATM,Grill,Nairobi, Kenya, Africa, fabrication" />
+  <meta name="author" content="OMWAMI TECHNOLOGIES" />
+  <link rel="icon" type="image/png" href="Omwami Logo2.jpg" />
+  <title>OMWAMI TECHNOLOGIES | Global-Ready Custom Machinery</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- AOS (scroll animations) -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+
+  <style>
+    /* -------------------- CSS VARIABLES -------------------- */
+    :root {
+      --bg: #0b0c0f;
+      --bg-2: #0f1116; /* cards/sections */
+      --text: #e6e7ea;
+      --muted: #a9adb5;
+      --brand: #25D366;
+      --brand-2: #00A86B; /* deeper green */
+      --accent: #4da3ff; /* secondary accent */
+      --container: 1200px;
+      --radius: 16px;
+      --shadow: 0 10px 30px rgba(0,0,0,.25);
+      --shadow-soft: 0 8px 18px rgba(0,0,0,.15);
+    }
+    [data-theme="light"] {
+      --bg: #f7f8fa;
+      --bg-2: #ffffff;
+      --text: #1b1f24;
+      --muted: #5b6676;
+      --brand: #25D366;
+      --brand-2: #1ebc59;
+      --accent: #2b6df6;
+      --shadow: 0 10px 24px rgba(30, 41, 59, .15);
+      --shadow-soft: 0 6px 14px rgba(30, 41, 59, .10);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, sans-serif; background: var(--bg); color: var(--text); }
+
+    /* -------------------- UTIL -------------------- */
+    .container { max-width: var(--container); margin: 0 auto; padding: 0 20px; }
+    .section { padding: 80px 0; }
+    .section-title { font-family: 'Manrope', sans-serif; font-weight: 800; letter-spacing: -0.02em; font-size: clamp(1.8rem, 2.5vw, 2.6rem); margin: 0 0 24px; }
+    .section-sub { color: var(--muted); margin: 0 0 36px; font-size: 1rem; }
+    .btn { display: inline-flex; align-items: center; gap: 10px; border: 0; background: var(--brand); color: #fff; padding: 12px 18px; border-radius: 999px; font-weight: 700; cursor: pointer; text-decoration: none; box-shadow: var(--shadow-soft); transition: transform .15s ease, box-shadow .2s ease, background .2s ease; }
+    .btn:hover { transform: translateY(-2px); box-shadow: var(--shadow); background: var(--brand-2); }
+    .btn-outline { background: transparent; border: 2px solid var(--text); color: var(--text); }
+
+    /* -------------------- HEADER -------------------- */
+    header { position: sticky; top: 0; z-index: 999; backdrop-filter: saturate(140%) blur(8px); background: color-mix(in srgb, var(--bg) 85%, transparent); border-bottom: 1px solid rgba(128,128,128,.12); }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand img { height: 40px; width: 40px; object-fit: cover; border-radius: 8px; }
+    .brand h1 { font-size: 1.1rem; margin: 0; letter-spacing: .02em; font-weight: 800; font-family: 'Manrope', sans-serif; }
+
+    .links { display: flex; gap: 22px; align-items: center; }
+    .links a { color: var(--text); text-decoration: none; font-weight: 700; font-size: .98rem; opacity: .9; }
+    .links a.active, .links a:hover { color: var(--brand); opacity: 1; }
+
+    .theme-toggle, .menu-toggle { all: unset; display: grid; place-items: center; height: 40px; width: 40px; border-radius: 10px; cursor: pointer; }
+    .menu-toggle { display: none; }
+
+    /* Mobile drawer */
+    .drawer { position: fixed; inset: 0 0 0 auto; width: min(80%, 360px); transform: translateX(100%); transition: transform .25s ease; background: var(--bg-2); box-shadow: var(--shadow); padding: 18px; display: flex; flex-direction: column; gap: 16px; }
+    .drawer.open { transform: translateX(0); }
+    .drawer a { padding: 12px 14px; border-radius: 12px; background: color-mix(in srgb, var(--bg) 85%, transparent); text-decoration: none; color: var(--text); font-weight: 700; }
+    .drawer a:hover { background: color-mix(in srgb, var(--brand) 20%, var(--bg)); }
+
+    @media (max-width: 820px) {
+      .links { display: none; }
+      .menu-toggle { display: grid; }
+    }
+
+    /* -------------------- HERO -------------------- */
+    .hero { position: relative; min-height: 78vh; display: grid; align-items: center; }
+    .hero::before { content: ""; position: absolute; inset: 0; background: radial-gradient(1200px 600px at 20% 10%, color-mix(in srgb, var(--brand) 35%, transparent), transparent), radial-gradient(1000px 500px at 80% 20%, color-mix(in srgb, var(--accent) 22%, transparent), transparent), linear-gradient(180deg, color-mix(in srgb, var(--bg) 20%, black), var(--bg)); z-index: -1; }
+    .hero .wrap { display: grid; grid-template-columns: 1.15fr .85fr; gap: 28px; }
+    .hero h2 { font-family: 'Manrope', sans-serif; font-weight: 800; font-size: clamp(2rem, 3.5vw, 3.4rem); letter-spacing: -0.02em; margin: 0 0 14px; }
+    .hero p { color: var(--muted); margin: 0 0 20px; font-size: 1.05rem; }
+    .hero .cta { display: flex; gap: 12px; flex-wrap: wrap; }
+    .hero .media { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); min-height: 320px; background: url('https://images.unsplash.com/photo-1607330284217-5ad6a5b35283?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat; }
+
+    @media (max-width: 920px) {
+      .hero .wrap { grid-template-columns: 1fr; }
+      .hero { min-height: 68vh; }
+    }
+
+    /* -------------------- ABOUT -------------------- */
+    #about .grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 28px; }
+    #about .card { background: var(--bg-2); border-radius: var(--radius); padding: 22px; box-shadow: var(--shadow-soft); }
+    #about .points { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-top: 14px; }
+    #about .pill { background: color-mix(in srgb, var(--brand) 22%, var(--bg-2)); border-radius: 999px; padding: 10px 12px; font-weight: 700; text-align: center; }
+    #about img { width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius); box-shadow: var(--shadow-soft); }
+    @media (max-width: 920px) { #about .grid { grid-template-columns: 1fr; } #about .points { grid-template-columns: 1fr 1fr; } }
+
+    /* -------------------- FILTERS -------------------- */
+    .filters { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 18px; }
+    .filter-btn { border: 0; padding: 10px 14px; border-radius: 999px; background: color-mix(in srgb, var(--bg) 85%, transparent); color: var(--text); cursor: pointer; font-weight: 700; }
+    .filter-btn.active { background: var(--brand); color: #fff; }
+
+    /* -------------------- PRODUCTS -------------------- */
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+    .card { background: var(--bg-2); border-radius: 18px; box-shadow: var(--shadow-soft); overflow: hidden; transition: transform .18s ease, box-shadow .18s ease; cursor: pointer; }
+    .card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .card img { width: 100%; height: 200px; object-fit: cover; display: block; }
+    .card h4 { font-size: 1.1rem; margin: 14px 14px 6px; font-weight: 800; font-family: 'Manrope', sans-serif; }
+    .price { margin: 0 14px 10px; color: var(--muted); }
+    .badge { display: inline-block; margin-left: 8px; padding: 3px 8px; border-radius: 999px; background: color-mix(in srgb, var(--brand) 25%, var(--bg-2)); color: var(--text); font-size: .8rem; font-weight: 700; }
+    .btn-whatsapp { margin: 0 14px 16px; }
+
+    /* -------------------- MODAL -------------------- */
+    .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.6); z-index: 1000; padding: 20px; }
+    .modal-content { background: var(--bg-2); color: var(--text); margin: auto; padding: 22px; border-radius: 18px; width: min(520px, 92vw); position: relative; top: 50%; transform: translateY(-50%); box-shadow: var(--shadow); }
+    .close-btn { position: absolute; right: 14px; top: 10px; font-size: 26px; cursor: pointer; user-select: none; }
+
+    /* -------------------- BLOGS -------------------- */
+    .blog-card .meta { display: flex; align-items: center; gap: 10px; margin: 0 14px 12px; color: var(--muted); font-size: .92rem; }
+
+    /* -------------------- CONTACT -------------------- */
+    .contact-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 24px; }
+    .contact-card { background: var(--bg-2); padding: 18px; border-radius: var(--radius); box-shadow: var(--shadow-soft); }
+    .contact-card form { display: grid; gap: 12px; }
+    .contact-card input, .contact-card textarea { width: 100%; background: color-mix(in srgb, var(--bg) 85%, transparent); border: 1px solid rgba(128,128,128,.25); color: var(--text); padding: 12px 12px; border-radius: 12px; }
+    .contact-card textarea { min-height: 120px; resize: vertical; }
+    .map { border: 0; width: 100%; height: 100%; min-height: 340px; border-radius: var(--radius); box-shadow: var(--shadow-soft); }
+    @media (max-width: 920px) { .contact-grid { grid-template-columns: 1fr; } }
+
+    /* -------------------- FOOTER -------------------- */
+    footer { background: color-mix(in srgb, var(--bg) 96%, black); padding: 50px 0 28px; margin-top: 60px; border-top: 1px solid rgba(128,128,128,.12); }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 24px; }
+    .footer h4 { font-family: 'Manrope', sans-serif; margin: 0 0 10px; }
+    .footer a { color: var(--muted); text-decoration: none; display: block; margin: 6px 0; }
+    .footer a:hover { color: var(--text); }
+    .copy { color: var(--muted); text-align: center; margin-top: 22px; font-size: .9rem; }
+    @media (max-width: 920px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+
+    /* Back to top */
+    #backToTop { position: fixed; bottom: 80px; right: 20px; display: none; background: var(--accent); color: #fff; border: 0; border-radius: 50%; padding: 12px; cursor: pointer; }
+    #backToTop.show { display: block; }
+
+    /* Floating WhatsApp */
+    .fab { position: fixed; right: 18px; bottom: 18px; height: 56px; width: 56px; border-radius: 50%; background: var(--brand); box-shadow: var(--shadow); display: grid; place-items: center; z-index: 1001; }
+    .fab img { width: 28px; height: 28px; filter: brightness(0) invert(1); }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER / NAV -->
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <img src="Omwami Logo1.jpg" alt="Omwami Logo" loading="lazy">
+        <h1>OMWAMI TECHNOLOGIES</h1>
+      </div>
+      <nav class="links">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#products" class="nav-link">Products</a>
+        <a href="#Blogs" class="nav-link">Blogs</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle light/dark">🌓</button>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+    </div>
+    <div class="drawer" id="drawer">
+      <a href="#about" class="nav-link">About</a>
+      <a href="#products" class="nav-link">Products</a>
+      <a href="#Blogs" class="nav-link">Blogs</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero section">
+    <div class="container wrap">
+      <div data-aos="fade-up">
+        <h2>Reliable Machinery for a Global Market</h2>
+        <p>Designing and fabricating high‑quality food‑processing and industrial machines from Nairobi KE to the world. Built for performance, safety, and scalability.</p>
+        <div class="cta">
+          <a href="#products" class="btn">View Products</a>
+          <a href="https://wa.me/254796875300" class="btn btn-outline">Get a Quote</a>
+        </div>
+      </div>
+      <div class="media" data-aos="zoom-in" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section">
+    <div class="container">
+      <h3 class="section-title">About Us</h3>
+      <p class="section-sub">Trusted Jua Kali Producer ,engineering partner for SMEs and enterprises across Kenya and East Africa.</p>
+      <div class="grid" data-aos="fade-up">
+        <div class="card">
+          <p>
+            OMWAMI TECHNOLOGIES is a SME oriented Jua Kali manufacturer and engineering company headquartered in Nairobi, Kenya. We specialize in the design and fabrication of high‑quality food‑processing and industrial machinery, serving clients across Kenya and East Africa.
+            Our portfolio include; Milk Processing Units,Industrial Piping, Chips Fryers, Roasting Machines, Water Purification Systems, and Reverse Osmosis (RO) equipment—engineered to meet international quality and safety standards.We Also design and Fabricate Staircase and Balconies and all types of railings.
+          </p>
+          <div class="points">
+            <div class="pill">🌍 Global Reach</div>
+            <div class="pill">⚙️ Quality Engineering</div>
+            <div class="pill">💰 Cost Efficiency</div>
+          </div>
+        </div>
+        <img src="hero-image50.jpg" alt="OMWAMI workshop and machinery" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section id="products" class="section">
+    <div class="container">
+      <h3 class="section-title">Our Products</h3>
+      <p class="section-sub">Filter by category to quickly find what you need.</p>
+
+      <div class="filters" role="tablist" aria-label="Product filters">
+        <button class="filter-btn active" data-filter="all" role="tab">All</button>
+        <button class="filter-btn" data-filter="Milk" role="tab">Milk Processing Machines</button>
+        <button class="filter-btn" data-filter="water" role="tab">Water Systems</button>
+        <button class="filter-btn" data-filter="Metal" role="tab">Balcony/Metal Works</button>
+        <button class="filter-btn" data-filter="Food" role="tab">Food Processing Equipment</button>
+      </div>
+
+      <div class="grid" id="productGrid">
+        <!-- Each card keeps your original content but adds data-category and lazy loading -->
+        <div class="card" data-category="Food" data-description="High-quality stainless steel deep fryer designed for commercial chips production. Energy efficient and easy to clean.">
+          <img src="hero-image1.jpg" alt="Chips Frying Machine" loading="lazy">
+          <h4>Chips Frying Machine <span class="badge">In Stock</span></h4>
+          <p class="price">Ready to ship</p>
+          <a href="https://wa.me/254796875300" class="btn btn-whatsapp">📲 Order on WhatsApp</a>
+        </div>
+
+        <div class="card" data-category="Food" data-description="Durable roasting machine suitable for Meat, mutton, pork and chicken. Uniform heat distribution for consistent results.">
+          <img src="hero-image2.jpg" alt="Roasting Machine" loading="lazy">
+          <h4>Roasting Machine <span class="badge">In Stock</span></h4>
+          <p class="price">Uniform heat, consistent results</p>
+          <a href="https://wa.me/254796875300" class="btn btn-whatsapp">📲 Order on WhatsApp</a>
+        </div>
+
+        <div class="card" data-category="Metal" data-description="Stainless Steel Durable Balcony Designer and Fabrications-Longlasting and cost efficient Mounting Services Available.">
+          <img src="hero-image3.jpg" alt="Balcony Design and Fabrication" loading="lazy">
+          <h4>Balcony Designer <span class="badge">Available</span></h4>
+          <p class="price">Balcony Designs and Fabrications</p>
+          <a href="https://wa.me/254796875300" class="btn btn-whatsapp">📲 Order on WhatsApp</a>
+        </div>
+
+        <div class="card" data-category="water" data-description="High-performance water purification system using reverse osmosis technology. Ideal for commercial and domestic use.">
+          <img src="hero-image4.jpg" alt="Reverse Osmosis Machine" loading="lazy">
+          <h4>Reverse Osmosis Machine <span class="badge">In Stock</span></h4>
+          <p class="price">Commercial & domestic RO</p>
+          <a href="https://wa.me/254796875300" class="btn btn-whatsapp">📲 Order on WhatsApp</a>
+        </div>
+
+        <div class="card" data-category="water" data-description="High-performance water purification system using reverse osmosis technology. Ideal for commercial and domestic use.">
+          <img src="hero-image5.jpg" alt="Reverse Osmosis Machine" loading="lazy">
+          <h4>Reverse Osmosis Machine <span class="badge">In Stock</span></h4>
+          <p class="price">RO configurations available</p>
+          <a href="https://wa.me/254796875300" class="btn btn-whatsapp">📲 Order on WhatsApp</a>
+        </div>
+
+        <div class="card" data-category="water" data-description="Fully equipped water refilling station with filters and storage tanks. Designed for high-volume commercial operations.">
+          <img src="hero-image6.jpg" alt="Water Refilling Station" loading="lazy">
+          <h4>Water Refilling Station <span class="badge">In Stock</span></h4>
+          <p class="price">High-volume commercial setups</p>
+          <a href="https://wa.me/254796875300" class="btn btn-whatsapp">📲 Order on WhatsApp</a>
+        </div>
+
+        <div class="card" data-category="water" data-description="Self-service water vending machine for public or commercial use. Fully automated and hygienic.">
+          <img src="hero-image7.jpg" alt="Water Vending Station" loading="lazy">
+          <h4>Water Vending Station <span class="badge">In Stock</span></h4>
+          <p class="price">Automated & hygienic</p>
+          <a href="https://wa.me/254796875300" class="btn btn-whatsapp">📲 Order on WhatsApp</a>
+        </div>
+
+        <div class="card" data-category="Milk" data-description="Automated milk dispenser (ATM) with accurate measurement and refrigeration to keep milk fresh.">
+          <img src="hero-image8.jpg" alt="Milk ATM Machine" loading="lazy">
+          <h4>Milk ATM Machine <span class="badge">In Stock</span></h4>
+          <p class="price">Refrigerated & precise</p>
+          <a href="https://wa.me/254796875300" class="btn btn-whatsapp">📲 Order on WhatsApp</a>
+        </div>
+
+        <div class="card" data-category="Food" data-description="Salad ATM dispenser for oils, salad dressings, and liquid condiments. Hygienic and easy to operate.">
+          <img src="hero-image9.jpg" alt="Salad ATM Dispenser" loading="lazy">
+          <h4>Salad ATM Dispenser <span class="badge">In Stock</span></h4>
+          <p class="price">Clean & simple operation</p>
+          <a href="https://wa.me/254796875300" class="btn btn-whatsapp">📲 Order on WhatsApp</a>
+        </div>
+
+        <div class="card" data-category="Milk" data-description="Milk processing machine with pasteurization and cooling system. Suitable for dairy farms and milk bars.">
+          <img src="hero-image10.jpg" alt="Milk Processing Machine" loading="lazy">
+          <h4>Milk Pasteurizer <span class="badge">In Stock</span></h4>
+          <p class="price">Pasteurize & cool</p>
+          <a href="https://wa.me/254796875300" class="btn btn-whatsapp">📲 Order on WhatsApp</a>
+        </div>
+
+        <div class="card" data-category="Food" data-description="Portable maize sheller machine for small and medium farmers. High efficiency and low fuel consumption.">
+          <img src="hero-image11.jpg" alt="Maize Sheller" loading="lazy">
+          <h4>Maize Sheller <span class="badge">In Stock</span></h4>
+          <p class="price">Efficient & portable</p>
+          <a href="https://wa.me/254796875300" class="btn btn-whatsapp">📲 Order on WhatsApp</a>
+        </div>
+
+        <div class="card" data-category="Metal" data-description="Durable stainless steel Handrails For Staircase, Ramps, Bathrooms, Balconies and Walkways-Inclusive of Proffessional Mounting Services.">
+          <img src="hero-image12.jpg" alt="Handrails" loading="lazy">
+          <h4>Handrails <span class="badge">In Stock</span></h4>
+          <p class="price">Made with Durable Stainless Steel</p>
+          <a href="https://wa.me/254796875300" class="btn btn-whatsapp">📲 Order on WhatsApp</a>
+        </div>
+
+        <div class="card" data-category="Food" data-description="Sugarcane juicer with stainless steel rollers, ideal for juice businesses. High output and durable.">
+          <img src="hero-image13.jpg" alt="Sugarcane Juicer" loading="lazy">
+          <h4>Sugarcane Juicer <span class="badge">In Stock</span></h4>
+          <p class="price">High output, durable</p>
+          <a href="https://wa.me/254796875300" class="btn btn-whatsapp">📲 Order on WhatsApp</a>
+        </div>
+
+        <div class="card" data-category="Food" data-description="Popcorn machine for commercial use. Fast heating and high capacity for business efficiency.">
+          <img src="hero-image14.jpg" alt="Popcorn Machine" loading="lazy">
+          <h4>Popcorn Machine <span class="badge">Available</span></h4>
+          <p class="price">Fast heating, high capacity</p>
+          <a href="https://wa.me/254796875300" class="btn btn-whatsapp">📲 Order on WhatsApp</a>
+        </div>
+
+        <div class="card" data-category="water" data-description="High-performance water purification system using reverse osmosis technology. The setup shown includes:
+Control Panel: Automated control system with indicators, switches, and gauges for easy operation and monitoring.
+High-Pressure Pump: Drives water through the RO membranes for effective filtration.
+Pre-Treatment Filters.">
+          <img src="hero-image26.jpg" alt="Reverse Osmosis Machine" loading="lazy">
+          <h4>Water Purification & RO Systems <span class="badge">In Stock</span></h4>
+          <p class="price">High-performance water purification systems using Reverse Osmosis (RO) Technology</p>
+          <a href="https://wa.me/254796875300" class="btn btn-whatsapp">📲 Order on WhatsApp</a>
+        </div>
+
+        <div class="card" data-category="Metal" data-description="We specialize in the design, fabrication, and installation of durable, elegant, and safe handrails for residential, commercial, and industrial applications.
+Our handrails combine strength, safety, and style, crafted with precision from high-quality materials such as stainless steel, mild steel, or glass — depending on your space and aesthetic requirements.
+Key Features:
+🛠️ Custom Design & Fabrication: Handrails made to your specifications — straight, curved, or spiral — for staircases, balconies, walkways, and platforms.
+🧩 Material Options:
+Stainless Steel (SS304/SS316): Modern, rust-resistant, and low-maintenance.
+Mild Steel: Strong and cost-effective, ideal for industrial and outdoor use.
+Glass or Cable Railings: For a contemporary and open architectural look.
+🧱 Applications:
+Homes and apartments
+Commercial buildings and offices
+Industrial plants and factories
+Hotels, schools, and hospitals
+⚙️ Finishes: Mirror-polished, brushed, powder-coated, or painted finishes available.
+🧰 Installation Services: Precision onsite installation with safety and structural integrity guaranteed.
+Why Choose Us:
+Fabricated by skilled professionals with attention to detail.
+Strong, long-lasting, and safe railing systems.
+Aesthetic designs that enhance your property’s value.
+Reliable timelines and affordable rates.
+Whether for safety, accessibility, or modern décor, OmwamiTech provides handrail solutions that meet both architectural and industrial standard.">
+          <img src="hero-image22.jpg" alt="Balcony Design and Fabrication" loading="lazy">
+          <h4>Stainless Steel Handrails <span class="badge">Available</span></h4>
+          <p class="price">Stainless Steel (SS304/SS316): Modern, rust-resistant, and low-maintenance</p>
+          <a href="https://wa.me/254796875300" class="btn btn-whatsapp">📲 Order on WhatsApp</a>
+        </div>
+
+        <div class="card" data-category="Metal" data-description="Mild Steel: Strong and cost-effective, ideal for industrial and outdoor use. Durable Balcony Designer and Fabrications-Longlasting and cost efficient Mounting Services Available.">
+          <img src="hero-image23.jpg" alt="Balcony Design and Fabrication" loading="lazy">
+          <h4>Steel Balcony Designer <span class="badge">Available</span></h4>
+          <p class="price">Strong and cost-effective, ideal for industrial and outdoor use.</p>
+          <a href="https://wa.me/254796875300" class="btn btn-whatsapp">📲 Order on WhatsApp</a>
+        </div>
+
+        <div class="card" data-category="Food" data-description="Salad ATM dispenser for oils, salad dressings, and liquid condiments. Hygienic and easy to operate.">
+          <img src="hero-image29.jpg" alt="Salad ATM Dispenser" loading="lazy">
+          <h4>Salad ATM Dispenser <span class="badge">In Stock</span></h4>
+          <p class="price">Clean & simple operation</p>
+          <a href="https://wa.me/254796875300" class="btn btn-whatsapp">📲 Order on WhatsApp</a>
+        </div>
+
+        <div class="card" data-category="Food" data-description="High-quality stainless steel deep fryer designed for commercial chips production.Double Fryer. Uses 3 Phase ; Energy efficient and easy to clean.">
+          <img src="hero-image15.jpg" alt="Chips Frying Machine - Double Fryer" loading="lazy">
+          <h4>Chips Frying Machine <span class="badge">Out of Stock</span></h4>
+          <p class="price">3‑phase, energy efficient</p>
+          <a href="https://wa.me/254796875300" class="btn btn-whatsapp">📲 Order on WhatsApp</a>
+        </div>
+
+        <div class="card" data-category="Metal" data-description="Engineered Kitchen Designs & Equipments Ranging from Work tops, Modern Kitchen Designs, Stainless Steel Shelves,Chips Fryers, Popcorn Machines and more.">
+          <img src="hero-image16.jpg" alt="Kitchen equipment—engineered" loading="lazy">
+          <h4>Modern Kitchen <span class="badge">Available</span></h4>
+          <p class="price">Heavy‑duty & Cost Efficient</p>
+          <a href="https://wa.me/254796875300" class="btn btn-whatsapp">📲 Order on WhatsApp</a>
+        </div>
+
+        <div class="card" data-category="Milk" data-description="Milk chillers designed to quickly cool freshly collected milk to a safe storage temperature,usually around 4 degrees celcius.">
+          <img src="hero-image17.jpg" alt="Milk Processing Machine" loading="lazy">
+          <h4>Milk Chiller <span class="badge">In Stock</span></h4>
+          <p class="price">Rapid cooling & Hygienic</p>
+          <a href="https://wa.me/254796875300" class="btn btn-whatsapp">📲 Order on WhatsApp</a>
+        </div>
+
+        <div class="card" data-category="Metal" data-description="We Offer Custom Design & Fabrication of High-precision stainless-steel piping projects, featuring a complete process line installation with hygienic welds, sanitary fittings, and precision routing. Our team ensures every connection meets the highest standards of safety, efficiency, and cleanliness — ideal for food & beverage, pharmaceutical, and chemical industries.Our Services Include:
+🧰 Process Piping Installation: Stainless steel, carbon steel, and PVC process lines.
+⚙️ Equipment Integration: Connection of tanks, pumps, heat exchangers, and reactors.
+💧 Utility Lines: Steam, compressed air, water, and condensate systems.
+🧪 Hygienic & Sanitary Piping: For beverage, dairy, and pharmaceutical plants.
+🔧 Testing & Commissioning: Pressure testing, flushing, and system certification.
+📐 Custom Design & Fabrication: Tailored layouts for new and existing facilities.">
+          <img src="hero-image18.jpg" alt="Process Piping Installation" loading="lazy">
+          <h4>Industrial Piping Installation <span class="badge">Available</span></h4>
+          <p class="price">Connection of tanks, pumps, heat exchangers, and reactors.</p>
+          <a href="https://wa.me/254796875300" class="btn btn-whatsapp">📲 Order on WhatsApp</a>
+        </div>
+
+        <div class="card" data-category="Milk" data-description="At Omwami Technologies, we design and fabricate high-quality stainless-steel milk tankers built to meet the demanding needs of dairy processors, cooperatives, and transporters across Kenya and East Africa.Our milk tankers are engineered for hygiene, durability, and temperature retention, ensuring your milk reaches its destination in perfect condition
+        Key Features & Options:
+🚛 Food-Grade Stainless Steel Construction (SS304 / SS316): Corrosion-resistant and easy to clean for maximum hygiene.
+❄️ Insulated Double-Wall Design: Keeps milk cool during transport, minimizing spoilage and maintaining freshness.
+⚙️ Custom Capacities: From 500 L mini-tankers to 15,000 L road tankers — all tailored to your fleet requirements.
+🧴 Sanitary Fittings: CIP (Clean-In-Place) spray systems, outlet valves, manholes, sight glasses, and level indicators.
+🔧 Mounting & Chassis Integration: Professionally installed on trucks, trailers, or stationary bases.
+🌍 Optional Add-Ons: Flow meters, temperature sensors, GPS tracking, and branding with your company logo.">
+          <img src="hero-image19.jpg" alt="Milk Processing Machine" loading="lazy">
+          <h4>Milk Tanker Fabrication & Installation Services. <span class="badge">Available</span></h4>
+          <p class="price">Corrosion-resistant and easy to clean for maximum hygiene.</p>
+          <a href="https://wa.me/254796875300" class="btn btn-whatsapp">📲 Order on WhatsApp</a>
+        </div>  
+
+        <div class="card" data-category="water" data-description="We manufacture and install custom-built water tankers designed for reliable water transport, distribution, and storage across industrial, agricultural, and domestic applications.
+Our tankers are made from high-grade stainless steel or mild steel, ensuring long service life, hygiene, and durability even under tough conditions.
+Key Features:
+🚛 Durable Construction: Fabricated from heavy-duty stainless steel (SS304/SS316) or carbon steel, built to withstand rough terrain and heavy use.
+💧 Leak-Proof Design: Precision welding and thorough testing guarantee safe and efficient water delivery without contamination or wastage.
+❄️ Custom Capacities: Available from 1,000 liters to 20,000 liters, designed to fit trucks, trailers, or stationary platforms.
+⚙️ Optional Components:
+Water pumps (for delivery and suction)
+Hose reels and spray nozzles
+Flow meters and level gauges
+Ladders, manholes, and inspection ports
+🌍 Applications: Domestic water supply, irrigation, construction sites, firefighting support, and industrial water distribution.">
+          <img src="hero-image20.jpg" alt="Water Tanker Fabrication & Installation Services" loading="lazy">
+          <h4>Water Tanker Fabrication & Installation Services <span class="badge">In Stock</span></h4>
+          <p class="price">🚛 Fabricated from heavy-duty stainless steel (SS304/SS316) or carbon steel.</p>
+          <a href="https://wa.me/254796875300" class="btn btn-whatsapp">📲 Order on WhatsApp</a>
+        </div>
+
+        <div class="card" data-category="Metal" data-description="We specialize in the design, fabrication, and installation of durable, elegant, and safe handrails for residential, commercial, and industrial applications.
+Our handrails combine strength, safety, and style, crafted with precision from high-quality materials such as stainless steel, mild steel, or glass — depending on your space and aesthetic requirements.
+Key Features:
+🛠️ Custom Design & Fabrication: Handrails made to your specifications — straight, curved, or spiral — for staircases, balconies, walkways, and platforms.
+🧩 Material Options:
+Stainless Steel (SS304/SS316): Modern, rust-resistant, and low-maintenance.
+Mild Steel: Strong and cost-effective, ideal for industrial and outdoor use.
+Glass or Cable Railings: For a contemporary and open architectural look.
+🧱 Applications:
+Homes and apartments
+Commercial buildings and offices
+Industrial plants and factories
+Hotels, schools, and hospitals
+⚙️ Finishes: Mirror-polished, brushed, powder-coated, or painted finishes available.
+🧰 Installation Services: Precision onsite installation with safety and structural integrity guaranteed.
+Why Choose Us:
+Fabricated by skilled professionals with attention to detail.
+Strong, long-lasting, and safe railing systems.
+Aesthetic designs that enhance your property’s value.
+Reliable timelines and affordable rates.
+Whether for safety, accessibility, or modern décor, OmwamiTech provides handrail solutions that meet both architectural and industrial standard.">
+          <img src="hero-image28.jpg" alt="Balcony Design and Fabrication" loading="lazy">
+          <h4>Stainless Steel Handrails <span class="badge">Available</span></h4>
+          <p class="price">Stainless Steel (SS304/SS316): Modern, rust-resistant, and low-maintenance</p>
+          <a href="https://wa.me/254796875300" class="btn btn-whatsapp">📲 Order on WhatsApp</a>
+        </div>
+
+        <div class="card" data-category="water" data-description="We manufacture and install custom-built water tankers designed for reliable water transport, distribution, and storage across industrial, agricultural, and domestic applications.
+Our tankers are made from high-grade stainless steel or mild steel, ensuring long service life, hygiene, and durability even under tough conditions.
+Key Features:
+🚛 Durable Construction: Fabricated from heavy-duty stainless steel (SS304/SS316) or carbon steel, built to withstand rough terrain and heavy use.
+💧 Leak-Proof Design: Precision welding and thorough testing guarantee safe and efficient water delivery without contamination or wastage.
+❄️ Custom Capacities: Available from 1,000 liters to 20,000 liters, designed to fit trucks, trailers, or stationary platforms.
+🌍 Applications: Domestic water supply, irrigation, construction sites, firefighting support, and industrial water distribution.">
+          <img src="hero-image25.jpg" alt="Water Tanker Fabrication & Installation Services" loading="lazy">
+          <h4>Water Tanker Fabrication & Installation <span class="badge">In Stock</span></h4>
+          <p class="price">🚛 Fabricated from heavy-duty carbon steel.</p>
+          <a href="https://wa.me/254796875300" class="btn btn-whatsapp">📲 Order on WhatsApp</a>
+        </div>
+  
+        <div class="card" data-category="Metal" data-description="Find Custom Design & Fabrication of High-precision stainless-steel piping projects, featuring a complete process line installation with hygienic welds, sanitary fittings, and precision routing. Our team ensures every connection meets the highest standards of safety, efficiency, and cleanliness — ideal for food & beverage, pharmaceutical, and chemical industries.Our Services Include:
+🧰 Process Piping Installation: Stainless steel, carbon steel, and PVC process lines.
+⚙️ Equipment Integration: Connection of tanks, pumps, heat exchangers, and reactors.
+💧 Utility Lines: Steam, compressed air, water, and condensate systems.
+🧪 Hygienic & Sanitary Piping: For beverage, dairy, and pharmaceutical plants.
+🔧 Testing & Commissioning: Pressure testing, flushing, and system certification.
+📐 Custom Design & Fabrication: Tailored layouts for new and existing facilities.">
+          <img src="hero-image21.jpg" alt="Process Piping Installation" loading="lazy">
+          <h4>Industrial Piping <span class="badge">Available</span></h4>
+          <p class="price">Piping Installation & Equipment Integration.</p>
+          <a href="https://wa.me/254796875300" class="btn btn-whatsapp">📲 Order on WhatsApp</a>
+        </div>
+
+        <div class="card" data-category="Milk" data-description="At Omwami Technologies, we design and fabricate high-quality stainless-steel milk tankers built to meet the demanding needs of dairy processors, cooperatives, and transporters across Kenya and East Africa.Our milk tankers are engineered for hygiene, durability, and temperature retention, ensuring your milk reaches its destination in perfect condition
+        Key Features & Options:
+🚛 Food-Grade Stainless Steel ;Corrosion-resistant and easy to clean for maximum hygiene.
+❄️ Insulated Double-Wall Design: Keeps milk cool during transport, minimizing spoilage and maintaining freshness.
+⚙️ Custom Capacities: From 500 L mini-tankers to 15,000 L road tankers — all tailored to your fleet requirements.
+🧴 Sanitary Fittings: CIP (Clean-In-Place) spray systems, outlet valves, manholes, sight glasses, and level indicators.
+🔧 Mounting & Chassis Integration.">
+          <img src="hero-image24.jpg" alt="Milk Processing Machine" loading="lazy">
+          <h4>Milk Tanker Fabrication & Installation. <span class="badge">Available</span></h4>
+          <p class="price">Corrosion-resistant and easy to clean for maximum hygiene.</p>
+          <a href="https://wa.me/254796875300" class="btn btn-whatsapp">📲 Order on WhatsApp</a>
+        </div> 
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCT MODAL -->
+  <div id="productModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modalTitle">
+    <div class="modal-content">
+      <span class="close-btn" aria-label="Close">&times;</span>
+      <h3 id="modalTitle"></h3>
+      <p id="modalDescription"></p>
+      <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+        <a id="modalCTA" href="https://wa.me/254796875300" class="btn">📲 Order on WhatsApp</a>
+        <a href="#contact" class="btn btn-outline">Contact Sales</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOGS -->
+  <section id="Blogs" class="section">
+    <div class="container">
+      <h3 class="section-title">Latest Blogs</h3>
+      <p class="section-sub">Insights on machinery selection, maintenance, and water treatment.</p>
+      <div class="grid">
+        <article class="card blog-card" data-aos="fade-up">
+          <img src="blog1.jpg" alt="How to Choose the Right Jua Kali Machine" loading="lazy">
+          <h4>How to Choose the Right Jua Kali Machine</h4>
+          <div class="meta">📅 <span>Published: Jan 5, 2025</span></div>
+          <a href="blog1.html" class="btn btn-whatsapp" style="margin: 0 14px 16px;">📖 Read More</a>
+        </article>
+
+        <article class="card blog-card" data-aos="fade-up" data-aos-delay="100">
+          <img src="blog2.jpg" alt="Maintenance Tips for Longer Machine Life" loading="lazy">
+          <h4>5 Maintenance Tips for Longer Machine Life</h4>
+          <div class="meta">📅 <span>Published: Jan 12, 2025</span></div>
+          <a href="blog2.html" class="btn btn-whatsapp" style="margin: 0 14px 16px;">📖 Read More</a>
+        </article>
+
+        <article class="card blog-card" data-aos="fade-up" data-aos-delay="200">
+          <img src="blog3.jpg" alt="Why Reverse Osmosis is Best for Water Purification" loading="lazy">
+          <h4>Why Reverse Osmosis is Best for Water Purification</h4>
+          <div class="meta">📅 <span>Published: Jan 20, 2025</span></div>
+          <a href="blog3.html" class="btn btn-whatsapp" style="margin: 0 14px 16px;">📖 Read More</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <div class="container">
+      <h3 class="section-title">Contact Us</h3>
+      <p class="section-sub">Tell us about your project and get a tailored quotation.</p>
+      <div class="contact-grid">
+        <div class="contact-card" data-aos="fade-up">
+          <form id="contactForm">
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="tel" id="phone" placeholder="Phone (with country code)" required>
+            <textarea id="message" placeholder="Briefly describe what you need" required></textarea>
+            <button type="submit" class="btn">Send Message</button>
+            <p id="formStatus" class="section-sub" style="margin: 6px 0 0"></p>
+          </form>
+        </div>
+        <div data-aos="zoom-in">
+          <iframe class="map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen
+            src="https://www.google.com/maps?q=Omwami%20Technologies%20behind%20Shell%20Petrol%20Station%2C%20Kihunguro%2C%20Ruiru&output=embed"></iframe>
+        </div>
+      </div>
+
+      <div class="contact-card" style="margin-top:18px;" data-aos="fade-up">
+        <p><strong>Phone:</strong> +254 796875300 /+254 798368724 </p>
+        <p><strong>Location:</strong> Thika Road Next Total Petrol Station, Nairobi</p>
+        <p><strong>Email:</strong> info@omwamitech.com</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <h4>OMWAMI TECHNOLOGIES</h4>
+        <p class="section-sub">Engineering practical, Jua Kali reliable machines for growing businesses across East Africa and beyond.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <a href="#about">About</a>
+        <a href="#products">Products</a>
+        <a href="#Blogs">Blogs</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="#products">Milk Processing</a>
+        <a href="#products">Water Systems</a>
+        <a href="#products">Metal Works</a>
+        <a href="#products">Food Processing</a>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <a href="https://wa.me/254796875300" target="_blank">WhatsApp</a>
+        <a href="mailto:info@omwamitech.com">Email</a>
+        <a href="https://wa.me/254746110748" target="_blank">ROLi Holdings Ltd</a>
+      </div>
+      </div>
+      <div class="footer-about" style="text-align: center; width: 100%;">
+        <p>&copy; <span id="year"></span> OMWAMI TECHNOLOGIES. All rights reserved.</p>
+  </footer>
+
+  <button id="backToTop" aria-label="Scroll to top">⬆️</button>
+
+  <!-- Floating WhatsApp -->
+  <a class="fab" href="https://wa.me/254796875300" target="_blank" aria-label="Chat on WhatsApp">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" alt="WhatsApp">
+  </a>
+
+  <!-- SCRIPTS -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+   document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+  <script>
+    AOS.init({ once: true, duration: 700, easing: 'ease-out' });
+
+    // Theme toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const rootEl = document.documentElement;
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) rootEl.setAttribute('data-theme', savedTheme);
+    themeToggle.addEventListener('click', () => {
+      const next = rootEl.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      rootEl.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    });
+
+    // Mobile drawer
+    const menuToggle = document.getElementById('menuToggle');
+    const drawer = document.getElementById('drawer');
+    const closeDrawer = () => drawer.classList.remove('open');
+    menuToggle.addEventListener('click', () => drawer.classList.toggle('open'));
+    drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', closeDrawer));
+
+    // Active link highlight on scroll
+    const sections = ['about', 'products', 'Blogs', 'contact'];
+    const navLinks = document.querySelectorAll('.nav-link');
+    const setActive = (id) => navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === `#${id}`));
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) setActive(entry.target.id); });
+    }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
+    sections.forEach(id => { const el = document.getElementById(id); if (el) obs.observe(el); });
+
+    // Product Modal
+    const modal = document.getElementById('productModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDescription = document.getElementById('modalDescription');
+    const modalCTA = document.getElementById('modalCTA');
+    const closeBtn = document.querySelector('.close-btn');
+    document.querySelectorAll('#productGrid .card').forEach(card => {
+      card.addEventListener('click', (e) => {
+        if (e.target.closest('.btn')) return; // ignore CTA clicks
+        modalTitle.textContent = card.querySelector('h4').childNodes[0].textContent.trim();
+        modalDescription.textContent = card.getAttribute('data-description') || '';
+        modal.style.display = 'block';
+        modal.setAttribute('aria-hidden', 'false');
+        modalCTA.href = 'https://wa.me/254796875300?text=' + encodeURIComponent('Hello OMWAMI, I am interested in: ' + modalTitle.textContent);
+      });
+    });
+    closeBtn.onclick = () => { modal.style.display = 'none'; modal.setAttribute('aria-hidden', 'true'); };
+    window.onclick = (e) => { if (e.target == modal) { modal.style.display = 'none'; modal.setAttribute('aria-hidden', 'true'); } };
+
+    // Product Filters
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('#productGrid .card');
+    filterBtns.forEach(btn => btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      cards.forEach(c => {
+        const show = f === 'all' || c.dataset.category === f;
+        c.style.display = show ? '' : 'none';
+      });
+    }));
+
+    // Back to top
+    const backBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => backBtn.classList.toggle('show', window.scrollY > 300));
+    backBtn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // Contact form (simple client-side demo -> opens email)
+    const form = document.getElementById('contactForm');
+    const status = document.getElementById('formStatus');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const message = document.getElementById('message').value.trim();
+      if (!name || !email || !phone || !message) { status.textContent = 'Please fill in all fields.'; return; }
+      status.textContent = 'Preparing your email…';
+      const mailto = `mailto:info@omwamitech.com?subject=${encodeURIComponent('New Inquiry from ' + name)}&body=${encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\nPhone: ' + phone + '\n\nMessage:\n' + message)}`;
+      window.location.href = mailto;
+      setTimeout(() => status.textContent = 'If your email app did not open, write to info@omwamitech.com or WhatsApp us directly.' , 1200);
+    });
+  </script>
+</body>
+</html>

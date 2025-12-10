@@ -713,10 +713,11 @@ Key Features:
       const message = document.getElementById('message').value.trim();
       if (!name || !email || !phone || !message) { status.textContent = 'Please fill in all fields.'; return; }
       status.textContent = 'Preparing your email…';
-      const mailto = `mailto:info@omwamitech.com?subject=${encodeURIComponent('New Inquiry from ' + name)}&body=${encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\nPhone: ' + phone + '\n\nMessage:\n' + message)}`;
+      const mailto = `mailto:omwamitech@gmail.com?subject=${encodeURIComponent('New Inquiry from ' + name)}&body=${encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\nPhone: ' + phone + '\n\nMessage:\n' + message)}`;
       window.location.href = mailto;
-      setTimeout(() => status.textContent = 'If your email app did not open, write to info@omwamitech.com or WhatsApp us directly.' , 1200);
+      setTimeout(() => status.textContent = 'If your email app did not open, write to omwamitech@gmail.com or WhatsApp us directly.' , 1200);
     });
   </script>
 </body>
 </html>
+
